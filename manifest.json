@@ -1,0 +1,9 @@
+{
+  "id": "colorrweb",
+  "name": "ColorWeb",
+  "version": "1.0.5",
+  "minAppVersion": "1.4.0",
+  "description": "给标签页（页面导航栏）按顺序循环上色，可右键单独改色；并在前进/后退按钮上悬停显示将跳转到的文件名。",
+  "author": "wzl",
+  "isDesktopOnly": false
+}

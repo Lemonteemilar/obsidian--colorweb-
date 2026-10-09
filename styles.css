@@ -1,0 +1,80 @@
+/*
+ * ColorWeb (colorrweb)
+ * 标签颜色：颜色值由 main.js 写成每个标签自己的内联样式
+ *   标签元素 { background-color: rgba(...) !important; --colorweb-tab-bg: rgba(...); --tab-background-active: rgba(...) }
+ *
+ * 注意（1.0.1 修复）：
+ *   Obsidian 的标签标题栏（Tab title bar）结构是
+ *     .workspace-split.mod-root > .workspace-tabs > .workspace-tab-header-container > .workspace-tab-header
+ *   标签并不在 .workspace-leaf 里面。1.0.0 用 `.workspace-leaf .workspace-tab-header` 选择器，
+ *   一个都没匹配上，所以完全没上色。这里改回官方类名 .workspace-tab-header。
+ */
+
+.workspace-tab-header {
+	background-color: var(--colorweb-tab-bg, var(--tab-background-active)) !important;
+}
+
+/* 标签之间的分隔线在彩色底上会显得脏，淡一点 */
+.workspace-tab-header[style*="--colorweb-tab-bg"] .workspace-tab-header-inner::after {
+	opacity: 0.3;
+}
+
+/* ---------------- 前进 / 后退 悬停提示 ---------------- */
+
+.colorweb-tooltip {
+	position: fixed;
+	z-index: 2147483000;
+	max-width: 320px;
+	padding: 4px 8px;
+	border-radius: var(--radius-s, 4px);
+	background-color: var(--background-secondary, #2a2a2a);
+	color: var(--text-normal);
+	border: 1px solid var(--background-modifier-border);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+	font-size: var(--font-ui-smaller, 12px);
+	line-height: 1.3;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	pointer-events: none;
+}
+
+/* 原生 tooltip 显示时，我们的提示让位，避免文字互相盖住 */
+body:has(.tooltip:not([style*="display: none"])) .colorweb-tooltip {
+	display: none !important;
+}
+
+/* ---------------- 设置界面 ---------------- */
+
+.colorweb-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 12px;
+}
+
+.colorweb-cell {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+	padding: 6px 8px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m, 8px);
+}
+
+.colorweb-cell-label {
+	font-size: var(--font-ui-smaller, 12px);
+	color: var(--text-muted);
+}
+
+/* 右键菜单里的颜色小圆点 */
+.colorweb-dot {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	margin-right: 6px;
+	border-radius: 50%;
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+	vertical-align: middle;
+}

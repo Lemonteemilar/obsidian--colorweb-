@@ -1,0 +1,18 @@
+{
+  "enabled": true,
+  "transparentStrip": true,
+  "historyHint": true,
+  "opacity": 50,
+  "palette": [
+    "#FF5838",
+    "#FCAB28",
+    "#DEF720",
+    "#52F720",
+    "#20F7D7",
+    "#2876ED",
+    "#6328ED",
+    "#E328ED"
+  ],
+  "positions": {},
+  "overrides": {}
+}
